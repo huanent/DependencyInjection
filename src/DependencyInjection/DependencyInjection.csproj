@@ -6,11 +6,12 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>DependencyInjection</PackageTags>
-		<PackageId>Huanent.$(AssemblyName)</PackageId>
 		<PackageProjectUrl>https://github.com/huanent/DependencyInjection</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/huanent/DependencyInjection.git</RepositoryUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<Version>2.0.1</Version>
+		<Version>2.0.2</Version>
+		<AssemblyName>Huanent.$(MSBuildProjectName)</AssemblyName>
+		<RootNamespace>Huanent.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>
