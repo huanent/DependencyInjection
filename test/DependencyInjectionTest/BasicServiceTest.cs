@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DependencyInjection.ExtensionsTest
+namespace DependencyInjectionTest
 {
     [TestClass]
     public class BasicServiceTest
@@ -24,7 +24,7 @@ namespace DependencyInjection.ExtensionsTest
         [Singleton]
         class SingletonService { }
 
-        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(typeof(BasicServiceTest).Assembly).BuildServiceProvider();
+        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(Assembly.GetExecutingAssembly()).BuildServiceProvider();
 
         [TestMethod]
         public void LifetimeAttributeTest()

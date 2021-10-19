@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DependencyInjection.ExtensionsTest
+namespace DependencyInjectionTest
 {
     [TestClass]
     public class InterfaceServiceTest
@@ -20,7 +20,7 @@ namespace DependencyInjection.ExtensionsTest
         interface IService2 { }
 
 
-        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(typeof(BasicServiceTest).Assembly).BuildServiceProvider();
+        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(Assembly.GetExecutingAssembly()).BuildServiceProvider();
 
         [TestMethod]
         public void Has_Interface_Service_Test()

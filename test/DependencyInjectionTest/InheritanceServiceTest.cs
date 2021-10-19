@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Reflection;
 
-namespace DependencyInjection.ExtensionsTest
+namespace DependencyInjectionTest
 {
-
-
     [TestClass]
     public class InheritanceServiceTest
     {
@@ -17,7 +16,7 @@ namespace DependencyInjection.ExtensionsTest
         interface IService : IBaseService { };
         interface IBaseService { };
 
-        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(typeof(BasicServiceTest).Assembly).BuildServiceProvider();
+        IServiceProvider _services = new ServiceCollection().AddFromAssemblies(Assembly.GetExecutingAssembly()).BuildServiceProvider();
 
         [TestMethod]
         public void Class_Test()
