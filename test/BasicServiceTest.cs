@@ -15,6 +15,9 @@ namespace DependencyInjectionTest
         [Lifetime(ServiceLifetime.Transient)]
         class LifetimeService { }
 
+        [Lifetime("key", ServiceLifetime.Transient)]
+        class KeyedService { }
+
         [Transient]
         class TransientService { }
 
@@ -31,6 +34,17 @@ namespace DependencyInjectionTest
         {
             var service = _services.GetService<LifetimeService>();
             Assert.IsNotNull(service);
+        }
+
+        [TestMethod]
+        public void KeyedServiceTest()
+        {
+            var nonKeyService = _services.GetService<KeyedService>();
+            Assert.IsNull(nonKeyService);
+            var keyedService = _services.GetKeyedService<KeyedService>("key");
+            Assert.IsNotNull(keyedService);
+            var wrongKeyService = _services.GetKeyedService<KeyedService>("wrong_key");
+            Assert.IsNull(wrongKeyService);
         }
 
         [TestMethod]
