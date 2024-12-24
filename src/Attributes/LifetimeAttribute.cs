@@ -25,17 +25,18 @@ public class LifetimeAttribute : Attribute
     public Type[] Services { get; private set; }
 }
 
+#if NET8_0_OR_GREATER
+
 public class LifetimeAttribute<TService> : LifetimeAttribute
 {
     public LifetimeAttribute(ServiceLifetime serviceLifetime) : base(serviceLifetime, [typeof(TService)])
     {
     }
 
-#if NET8_0_OR_GREATER
+
     public LifetimeAttribute(object? key, ServiceLifetime serviceLifetime) : base(key, serviceLifetime, [typeof(TService)])
     {
     }
-#endif
 }
 
 public class LifetimeAttribute<TService1, TService2> : LifetimeAttribute
@@ -44,11 +45,9 @@ public class LifetimeAttribute<TService1, TService2> : LifetimeAttribute
     {
     }
 
-#if NET8_0_OR_GREATER
     public LifetimeAttribute(object? key, ServiceLifetime serviceLifetime) : base(key, serviceLifetime, [typeof(TService1), typeof(TService2)])
     {
     }
-#endif
 }
 
 public class LifetimeAttribute<TService1, TService2, TService3> : LifetimeAttribute
@@ -57,9 +56,9 @@ public class LifetimeAttribute<TService1, TService2, TService3> : LifetimeAttrib
     {
     }
 
-#if NET8_0_OR_GREATER
     public LifetimeAttribute(object? key, ServiceLifetime serviceLifetime) : base(key, serviceLifetime, [typeof(TService1), typeof(TService2), typeof(TService3)])
     {
     }
-#endif
 }
+
+#endif
